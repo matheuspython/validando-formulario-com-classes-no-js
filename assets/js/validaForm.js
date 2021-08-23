@@ -21,7 +21,9 @@ class ValidaForm{
   valida(){
     this.button.addEventListener('click', () => {
       this.validaVazio()
-
+      this.validaPorRange(this.usuario,3,12, 'usuario')
+      this.validaCPF()
+      this.validaPorRange(this.senha,6,12, 'senha')
     })
   }
   validaVazio(){
@@ -34,7 +36,14 @@ class ValidaForm{
       this.RSsenha == ''
     ) alert('voce deixou algum dos campos vazios')
   }
-
+  validaPorRange(usuarioOuSenha, range1, range2,nome){
+    if(usuarioOuSenha.value.length<range1) alert(`${nome} invalido`)
+    if(usuarioOuSenha.value.length>range2) alert(`${nome} invalido`)
+  }
+  validaCPF(){
+    const cpf = new ValidaCPF(this.cpf.value);
+    if (!cpf.valida()) alert('CPF inválido');
+}
 
 }
 
