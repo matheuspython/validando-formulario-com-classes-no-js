@@ -40,3 +40,7 @@ form button:hover {
 .error-text {
   color: red;
 }
+.error-text2 {
+  color: red;
+  font-size: 12px;
+}
