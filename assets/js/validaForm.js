@@ -34,15 +34,38 @@ class ValidaForm{
       this.usuario.value == '' ||
       this.senha == '' || 
       this.RSsenha == ''
-    ) alert('voce deixou algum dos campos vazios')
+    ) {
+      const inputs = document.querySelectorAll('input')
+      inputs.forEach(value => {
+        if(value.value === ''){
+          value.placeholder = 'prencha este campo'
+        }
+      })  
+    
+    }
   }
   validaPorRange(usuarioOuSenha, range1, range2,nome){
-    if(usuarioOuSenha.value.length<range1) alert(`${nome} invalido`)
-    if(usuarioOuSenha.value.length>range2) alert(`${nome} invalido`)
+    let text = ' invalida'
+    if(nome === 'usuario') text = ' invalido'
+
+    if(usuarioOuSenha.value.length<range1) {
+     const campo = document.querySelector(`.label-${nome}`)
+     campo.classList.add('error-text')
+     campo.innerHTML += text   
+    }
+    if(usuarioOuSenha.value.length>range2) {
+      const campo = document.querySelector(`.label-${nome}`)
+      campo.classList.add('error-text')
+      campo.innerHTML += text
+    }
   }
   validaCPF(){
     const cpf = new ValidaCPF(this.cpf.value);
-    if (!cpf.valida()) alert('CPF inválido');
+    if (!cpf.valida()) {
+      const cpfLabel = document.querySelector('.label-cpf')
+      cpfLabel.classList.add('error-text')
+      cpfLabel.innerHTML += ' invalido' 
+    }
 }
 
 }
