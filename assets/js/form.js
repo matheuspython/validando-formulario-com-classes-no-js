@@ -43,6 +43,7 @@ class ValidaForm{
     let valid = true;
 
     for(let errorText of this.formulario.querySelectorAll('.error-text2')){
+      document.querySelectorAll('input').forEach(value => value.style.border = '1px solid black')
       errorText.remove()
     }
 
@@ -94,6 +95,7 @@ class ValidaForm{
   }
 
   criaErro(campo, msg){
+    campo.style.border = '1px solid red'
     const div = document.createElement('div');
     div.innerHTML = msg;
     div.classList.add('error-text2')
